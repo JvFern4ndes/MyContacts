@@ -6,6 +6,9 @@
   "repository": "git@github.com:JvFern4ndes/MyContacts.git",
   "author": "João Victor <jvfernandes.contato@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "npx nodemon src/index.js"
+  },
   "dependencies": {
     "express": "^4.18.1"
   },
