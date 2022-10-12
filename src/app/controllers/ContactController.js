@@ -7,8 +7,8 @@ class ContactController {
     response.json(contacts);
   }
 
-  show() {
-
+  show(request, response) {
+    response.json(request.params);
   }
 
   store() {
