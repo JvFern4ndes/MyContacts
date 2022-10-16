@@ -56,9 +56,15 @@ class ContactController {
     }
 
     const contactByEmail = await ContactsRepository.findByEmail(email);
-    if (contactByEmail) {
+    if (contactByEmail && contactByEmail.id !== id) {
       return response.status(400).json({ error: 'This e-mail is already in use' });
     }
+
+    const contact = await ContactsRepository.update(id, {
+      name, email, phone, category_id,
+    });
+
+    response.json(contact);
   }
 
   async delete(request, response) {
