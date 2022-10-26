@@ -10,13 +10,13 @@ class CategoryController {
   async show(request, response) {
     const { id } = request.params;
 
-    const categorie = await CategoriesRepository.findById(id);
+    const category = await CategoriesRepository.findById(id);
 
-    if (!categorie) {
-      return response.status(404).json({ error: 'Categorie not found' });
+    if (!category) {
+      return response.status(404).json({ error: 'Category not found' });
     }
 
-    response.json(categorie);
+    response.json(category);
   }
 
   async store(request, response) {
@@ -29,6 +29,13 @@ class CategoryController {
     const category = await CategoriesRepository.create({ name });
 
     response.json(category);
+  }
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await CategoriesRepository.delete(id);
+    response.sendStatus(204);
   }
 }
 
